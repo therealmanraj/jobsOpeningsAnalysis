@@ -120,7 +120,7 @@ def databaseGet():
 
     message='Recieved Data'
     # Render the template with the Plotly HTML
-    return data_list
+    return data_list,message
 
 
 if __name__ == '__main__':

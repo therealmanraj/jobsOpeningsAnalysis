@@ -44,4 +44,28 @@
 .tableDiv {
   width: 100%;
   overflow-x: auto;
+  height: 65vh;
+  overflow-y: auto;
+  border-radius: 1vw;
+  padding: 1vw 1vh;
+  box-shadow: 0px 0px 20px 0 rgba(162, 68, 162, 0.765),
+    0px 0px 20px 0 rgba(162, 68, 162, 0.765);
+}
+
+.filters {
+  display: flex;
+  justify-content: right;
+}
+
+.filterSection {
+  width: max-content;
+}
+
+.filterList {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  column-gap: 1vw;
+  list-style-type: none;
+  padding: 0px;
 }
