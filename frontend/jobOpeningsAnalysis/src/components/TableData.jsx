@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import FilterData from "./FilterData";
 const TableData = () => {
   const [data, setData] = useState([]);
   const [message, setMessage] = useState("");
@@ -19,36 +20,39 @@ const TableData = () => {
     }
   };
   return (
-    <div className="tableDiv">
+    <div>
+      <FilterData />
       <p>{message}</p>
-      {data.length > 0 ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              {Object.keys(data[0])
-                .filter((key) => key !== "Date") // Exclude 'Date' from keys
-                .map((key) => (
-                  <th key={key}>{key}</th>
-                ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row) => (
-              <tr key={row.Date}>
-                <td>{row.Date}</td>
-                {Object.keys(row)
-                  .filter((key) => key !== "Date")
+      <div className="tableDiv">
+        {data.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                {Object.keys(data[0])
+                  .filter((key) => key !== "Date") // Exclude 'Date' from keys
                   .map((key) => (
-                    <td key={key}>{row[key]}</td>
+                    <th key={key}>{key}</th>
                   ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No data available</p>
-      )}
+            </thead>
+            <tbody>
+              {data.map((row) => (
+                <tr key={row.Date}>
+                  <td>{row.Date}</td>
+                  {Object.keys(row)
+                    .filter((key) => key !== "Date")
+                    .map((key) => (
+                      <td key={key}>{row[key]}</td>
+                    ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No data available</p>
+        )}
+      </div>
     </div>
   );
 };

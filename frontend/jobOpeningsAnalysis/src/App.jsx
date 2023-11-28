@@ -1,13 +1,18 @@
 import "./App.css";
-import FilterData from "./components/FilterData";
+import Navbar from "./components/Navbar";
 import TableData from "./components/tableData";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <h1>Job Openings Data</h1>
-      <FilterData />
-      <TableData />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<TableData />} />
+          <Route path="/visualizations" element={<div>Viz</div>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
