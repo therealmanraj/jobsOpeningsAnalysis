@@ -23,6 +23,7 @@
 
 .filterSection {
   width: max-content;
+  margin-right: 2vw;
 }
 
 .filterList {
@@ -32,4 +33,8 @@
   column-gap: 1vw;
   list-style-type: none;
   padding: 0px;
+}
+
+.gridLoader {
+  justify-content: center;
 }

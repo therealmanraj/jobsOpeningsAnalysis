@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
-import FilterData from "./FilterData";
+import { useEffect, useState } from "react";
+import { Grid } from "react-loader-spinner";
+
 const TableData = () => {
   const [data, setData] = useState([]);
-  const [message, setMessage] = useState("");
+  //   const [message, setMessage] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -13,18 +14,14 @@ const TableData = () => {
       const response = await fetch("http://127.0.0.1:4000/databaseGet");
       const result = await response.json();
       setData(result);
-      setMessage("Data Received");
     } catch (error) {
       console.error("Error fetching data:", error);
-      setMessage("Error fetching data");
     }
   };
   return (
     <div>
-      <FilterData />
-      <p>{message}</p>
-      <div className="tableDiv">
-        {data.length > 0 ? (
+      {data.length > 0 ? (
+        <div className="tableDiv">
           <table>
             <thead>
               <tr>
@@ -36,7 +33,7 @@ const TableData = () => {
                   ))}
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{ border: "10px solid white" }}>
               {data.map((row) => (
                 <tr key={row.Date}>
                   <td>{row.Date}</td>
@@ -49,10 +46,19 @@ const TableData = () => {
               ))}
             </tbody>
           </table>
-        ) : (
-          <p>No data available</p>
-        )}
-      </div>
+        </div>
+      ) : (
+        <Grid
+          height="80"
+          width="80"
+          color="white"
+          ariaLabel="grid-loading"
+          radius="12.5"
+          wrapperStyle={{}}
+          wrapperClass="gridLoader"
+          visible={true}
+        />
+      )}
     </div>
   );
 };
